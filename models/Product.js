@@ -14,15 +14,23 @@ Product.init(
     product_name: {
       type: DataTypes.STRING,
       allowNull: false,
-      dialectOptions: {
-        decimalNumbers: true,
+      validate: {
+        isDecimal: true,
       },
     },
     stock: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      dialectOptions: {
-        decimalNumbers: true,
+      defaultValue: 10,
+      validate: {
+        isNumeric: true,
+      },
+    },
+    category_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'category',
+        key: 'id',
       },
     },
   },
